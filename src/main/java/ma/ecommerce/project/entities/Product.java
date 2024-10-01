@@ -16,6 +16,9 @@ public class Product {
     private String color;
     @Column(name = "SIZE")
     private String size;
+    @ManyToOne (fetch = FetchType.LAZY)
+    private Category category;
+
 
 
     public void setId(Long id) {
@@ -48,6 +51,14 @@ public class Product {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Product(Long id, String name, String color, String size) {

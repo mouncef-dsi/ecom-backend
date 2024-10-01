@@ -1,6 +1,6 @@
 package ma.ecommerce.project.dto;
 
-public class CategoriesDto {
+public class CategoryDto {
     private String name;
     private String description;
 
@@ -20,7 +20,7 @@ public class CategoriesDto {
         this.description = description;
     }
 
-    public CategoriesDto(String name, String description) {
+    public CategoryDto(String name, String description) {
         this.name = name;
         this.description = description;
     }

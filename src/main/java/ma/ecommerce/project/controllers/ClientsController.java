@@ -1,23 +1,23 @@
 package ma.ecommerce.project.controllers;
 
-import ma.ecommerce.project.dto.CategoryDto;
-import ma.ecommerce.project.services.CategoryService;
+import ma.ecommerce.project.entities.Client;
+import ma.ecommerce.project.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import java.util.List;
 
 @RestController
-@RequestMapping ("/categories")
-public class CategoriesController {
+@RequestMapping("/clients")
+public class ClientsController {
+
     @Autowired
-    private CategoryService categoryService;
+    private ClientService clientService;
 
     @GetMapping
-    public List<CategoryDto> getAllCategories() {
-        return categoryService.getCategories();
+    public List<Client> getAllClients() {
+        return clientService.getAllClients();
     }
 }

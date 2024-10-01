@@ -1,7 +1,7 @@
 package ma.ecommerce.project.entities;
+
 import javax.persistence.*;
-
-
+import java.util.List;
 
 
 @Entity
@@ -17,6 +17,8 @@ public class Category {
     private String name;
     @Column(name= "DESCRIPTION")
     private String description;
+    @OneToMany (mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Product> products;
 
     public Long getId() {
         return id;
@@ -46,6 +48,14 @@ public class Category {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     public Category() {
