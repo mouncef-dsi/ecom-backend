@@ -1,5 +1,6 @@
 package ma.ecommerce.project.controllers;
 
+import ma.ecommerce.project.dto.ClientDto;
 import ma.ecommerce.project.entities.Client;
 import ma.ecommerce.project.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class ClientsController {
     private ClientService clientService;
 
     @GetMapping
-    public List<Client> getAllClients() {
-        return clientService.getAllClients();
+    public List<ClientDto> getAllClients() {
+        return clientService.getClients();
     }
 }

@@ -68,6 +68,7 @@ public class Product {
         this.size = size;
     }
 
+
     public Product() {
     }
 }

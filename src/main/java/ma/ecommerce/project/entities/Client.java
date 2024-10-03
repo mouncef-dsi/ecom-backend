@@ -1,8 +1,5 @@
 package ma.ecommerce.project.entities;
 
-
-
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -72,5 +69,15 @@ public class Client {
 
     public Client() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone=" + phone +
+                '}';
     }
 }

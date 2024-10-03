@@ -1,4 +1,5 @@
 package ma.ecommerce.project.controllers;
+import ma.ecommerce.project.dto.AddressDto;
 import ma.ecommerce.project.services.AddressService;
 import ma.ecommerce.project.entities.Address;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class AddressController {
     private AddressService addressService;
 
     @GetMapping
-    public List<Address> getAddresses() {
+    public List<AddressDto> getAddresses() {
         return addressService.getAllAddresses();
     }
 

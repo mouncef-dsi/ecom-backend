@@ -24,4 +24,12 @@ public class ProductService {
         return productDtos;
     }
 
+    public void createProduct(ProductDto productDto){
+        Product product = new Product();
+        product.setName(productDto.getName());
+        product.setSize(productDto.getSize());
+        product.setColor(productDto.getColor());
+        productRepository.save(product);
+    }
+
 }
