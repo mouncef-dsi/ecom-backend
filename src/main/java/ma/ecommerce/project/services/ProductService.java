@@ -31,5 +31,12 @@ public class ProductService {
         product.setColor(productDto.getColor());
         productRepository.save(product);
     }
+    public void deleteProduct(Long productId) {
+        if (productRepository.existsById(productId)) {
+            productRepository.deleteById(productId);
+        } else {
+            throw new IllegalArgumentException("Le produit avec l'identifiant " + productId + " n'existe pas.");
+        }
+    }
 
 }

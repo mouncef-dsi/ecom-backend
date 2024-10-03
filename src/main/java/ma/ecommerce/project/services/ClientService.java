@@ -31,4 +31,12 @@ public class ClientService {
         clientRepository.save(client);
     }
 
+    public void deleteClient(Long clientId) {
+        if (clientRepository.existsById(clientId)) {
+            clientRepository.deleteById(clientId);
+        } else {
+            throw new IllegalArgumentException("Le client avec l'identifiant " + clientId + " n'existe pas.");
+        }
+    }
+
 }

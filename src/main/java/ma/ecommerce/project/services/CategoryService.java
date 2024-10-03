@@ -34,4 +34,12 @@ public class CategoryService {
 
         categoryRepository.save(category);
     }
+
+    public void deleteCategory(Long categoryId) {
+        if (categoryRepository.existsById(categoryId)) {
+            categoryRepository.deleteById(categoryId);
+        } else {
+            throw new IllegalArgumentException("La catégorie avec l'identifiant " + categoryId + " n'existe pas.");
+        }
+    }
 }

@@ -32,4 +32,12 @@ public class AddressService {
 
         addressRepository.save(address);
     }
+
+    public void deleteAddress(Long addressId) {
+        if (addressRepository.existsById(addressId)) {
+            addressRepository.deleteById(addressId);
+        } else {
+            throw new IllegalArgumentException("L'adresse avec l'identifiant " + addressId + " n'existe pas.");
+        }
+    }
 }
