@@ -16,23 +16,19 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public List<ClientDto> getClients() {
-        List<Client> clients = clientRepository.findAll(); // on execute la recherche et
-        // on stock le resultat sur la variable categories
-
-        /** on va mapper entre entité et dto**/
-        List<ClientDto> clientDtos = new ArrayList<>(); // on crée une liste de type CategoryDto vide
-
-        clients.forEach(client -> // LAMBDA EXPRESSION
-                {
-                    System.out.println(client);
-                    ClientDto dto = new ClientDto(client.getName(), client.getEmail(), client.getPhone());
-                    clientDtos.add(dto);
-                }
-        );
-
-
+    public List<ClientDto> getClients(){
+        List<Client> clients = clientRepository.findAll();
+        List<ClientDto> clientDtos = new ArrayList<ClientDto>();
+        clients.forEach(client -> clientDtos.add(new ClientDto(client.getName(),client.getEmail(),client.getPhone())));
         return clientDtos;
+    }
+
+    public void createClient(ClientDto clientDto){
+        Client client = new Client();
+        client.setName(clientDto.getName());
+        client.setEmail(clientDto.getEmail());
+        client.setPhone(clientDto.getPhone());
+        clientRepository.save(client);
     }
 
 }

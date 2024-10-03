@@ -14,7 +14,7 @@ public class Client {
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "PHONE")
-    private long phone;
+    private String phone;
     @OneToMany (mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Address> addresses;
 
@@ -43,16 +43,16 @@ public class Client {
         this.email = email;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
 
-    public Client(long id, String name, String email, long phone) {
+    public Client(long id, String name, String email, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;

@@ -3,7 +3,7 @@ package ma.ecommerce.project.dto;
 public class ClientDto {
     private String name;
     private String email ;
-    private long phone;
+    private String phone;
 
     public String getName() {
         return name;
@@ -21,15 +21,15 @@ public class ClientDto {
         this.email = email;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public ClientDto(String name, String email, long phone) {
+    public ClientDto(String name, String email, String phone) {
         this.name = name;
         this.email = email;
         this.phone = phone;
