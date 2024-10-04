@@ -1,14 +1,12 @@
 package ma.ecommerce.project.services;
 
-
 import ma.ecommerce.project.dto.AddressDto;
-import ma.ecommerce.project.dto.CategoryDto;
 import ma.ecommerce.project.entities.Address;
-import ma.ecommerce.project.entities.Category;
 import ma.ecommerce.project.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +36,19 @@ public class AddressService {
             addressRepository.deleteById(addressId);
         } else {
             throw new IllegalArgumentException("L'adresse avec l'identifiant " + addressId + " n'existe pas.");
+        }
+    }
+
+    public void updateAddress(Long id, AddressDto addressDto) {
+        Optional<Address> existingAddress = addressRepository.findById(id);
+
+        if (existingAddress.isPresent()) {
+            Address address = existingAddress.get();
+            address.setStreet(addressDto.getStreet());
+            address.setCity(addressDto.getCity());
+            addressRepository.save(address);
+        } else {
+            throw new IllegalArgumentException("L'adresse avec l'identifiant " + id + " n'existe pas.");
         }
     }
 }
