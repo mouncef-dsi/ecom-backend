@@ -1,8 +1,10 @@
 package ma.ecommerce.project.dto;
 
 public class AddressDto {
+    private Long id;
     private String street;
     private String city;
+    private Long idClient;
 
     public String getStreet() {
         return street;
@@ -24,7 +26,24 @@ public class AddressDto {
 
     }
 
-    public AddressDto(String street, String city) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(Long idClient) {
+        this.idClient = idClient;
+    }
+
+    public AddressDto(Long id, String street, String city) {
+        this.id = id;
         this.street = street;
         this.city = city;
     }
