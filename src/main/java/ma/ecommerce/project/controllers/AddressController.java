@@ -19,6 +19,11 @@ public class AddressController {
     public List<AddressDto> getAddresses() {
         return addressService.getAddresses();
     }
+
+    @GetMapping("/{city}")
+    public List<AddressDto> getAddressesByCity(@PathVariable String city){
+        return addressService.getAddressesByCity(city);
+    }
     @PostMapping
     public void addAddress(@RequestBody AddressDto addressDto) {
         addressService.createAddress(addressDto);

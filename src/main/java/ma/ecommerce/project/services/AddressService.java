@@ -20,22 +20,30 @@ public class AddressService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public List<AddressDto> getAddresses(){
+    public List<AddressDto> getAddresses() {
         List<Address> addresses = addressRepository.findAll();
         List<AddressDto> addressDtos = new ArrayList<AddressDto>();
-        addresses.forEach(address -> addressDtos.add(new AddressDto(address.getId(),address.getStreet(),address.getCity())));
+        addresses.forEach(address -> addressDtos.add(new AddressDto(address.getId(), address.getStreet(), address.getCity())));
         return addressDtos;
     }
 
-    public void createAddress(AddressDto addressDto){
+    public List<AddressDto> getAddressesByCity(String city) {
+        List<Address> addresses = addressRepository.findAddressByCity(city);
+        List<AddressDto> addressDtos = new ArrayList<AddressDto>();
+        addresses.forEach(address -> addressDtos.add(new AddressDto(address.getId(), address.getStreet(), address.getCity())));
+        return addressDtos;
+    }
+
+
+    public void createAddress(AddressDto addressDto) {
         Address address = new Address();
         address.setStreet(addressDto.getStreet());
         address.setCity(addressDto.getCity());
 
         Optional<Client> clientOpt = clientRepository.findById(addressDto.getIdClient());
-        if(clientOpt.isEmpty()){
+        if (clientOpt.isEmpty()) {
             throw new IllegalArgumentException("Le client avec l'identifiant " + addressDto.getIdClient() + " n'existe pas.");
-        }else{
+        } else {
             Client client = clientOpt.get();
             address.setClient(client);
         }
