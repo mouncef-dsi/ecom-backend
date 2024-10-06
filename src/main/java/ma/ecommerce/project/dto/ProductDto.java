@@ -1,11 +1,21 @@
 package ma.ecommerce.project.dto;
 
-public class ProductDto {
+import org.apache.juli.logging.Log;
 
+public class ProductDto {
+    private long id;
     private String name;
     private String color;
     private String size; // todo convert to enum
+    private long idCategory;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -31,10 +41,19 @@ public class ProductDto {
         this.size = size;
     }
 
+    public long getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(long idCategory) {
+        this.idCategory = idCategory;
+    }
+
     public ProductDto() {
     }
 
-    public ProductDto(String size, String color, String name) {
+    public ProductDto(long   id, String size , String color, String name) {
+        this.id = id;
         this.size = size;
         this.color = color;
         this.name = name;

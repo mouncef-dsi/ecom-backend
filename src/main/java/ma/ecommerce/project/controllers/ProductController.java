@@ -1,5 +1,6 @@
 package ma.ecommerce.project.controllers;
 
+import ma.ecommerce.project.dto.AddressDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ma.ecommerce.project.dto.ProductDto;
@@ -19,6 +20,11 @@ public class ProductController {
     @GetMapping
     public List<ProductDto> getProducts() {
         return productService.getProducts();
+    }
+
+    @GetMapping("/{color}")
+    public List<ProductDto> getProductsByColor(@PathVariable String color){
+        return productService.getProductsByColor(color);
     }
 
     @PostMapping
