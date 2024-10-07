@@ -39,6 +39,13 @@ public class ProductService {
         return productDtos;
     }
 
+    public List<ProductDto> getProductsByCriteriaIgnoreCase(String color, String size) {
+        List<Product> products = productRepository.getProductsByCriteriaIgnoreCase(color,size);
+        List<ProductDto> productDtos = new ArrayList<ProductDto>();
+        products.forEach(product -> productDtos.add(new ProductDto(product.getId(), product.getName(), product.getColor(), product.getSize())));
+        return productDtos;
+    }
+
     public void createProduct(ProductDto productDto) {
         Product product = new Product();
         product.setName(productDto.getName());

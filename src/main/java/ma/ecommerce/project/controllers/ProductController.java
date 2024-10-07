@@ -27,6 +27,13 @@ public class ProductController {
         return productService.getProductsByColor(color);
     }
 
+    @GetMapping("/{color}/{size}")
+    public List<ProductDto> getProductsByCriteriaIgnoreCase(@PathVariable String color, @PathVariable String size){
+        return productService.getProductsByCriteriaIgnoreCase(color,size);
+    }
+
+
+
     @PostMapping
     public void addProduct(@RequestBody ProductDto productDto) {
         productService.createProduct(productDto);
