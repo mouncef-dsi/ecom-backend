@@ -19,6 +19,7 @@ public class Client {
     private List<Address> addresses;
 
 
+
     public long getId() {
         return id;
     }

@@ -7,18 +7,22 @@ public class AddressDto {
     private Long idClient;
 
     public String getStreet() {
+
         return street;
     }
 
     public void setStreet(String street) {
+
         this.street = street;
     }
 
     public String getCity() {
+
         return city;
     }
 
     public void setCity(String city) {
+
         this.city = city;
     }
 
@@ -27,18 +31,22 @@ public class AddressDto {
     }
 
     public Long getId() {
+
         return id;
     }
 
     public void setId(Long id) {
+
         this.id = id;
     }
 
     public Long getIdClient() {
+
         return idClient;
     }
 
     public void setIdClient(Long idClient) {
+
         this.idClient = idClient;
     }
 
