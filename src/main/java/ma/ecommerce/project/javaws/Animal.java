@@ -4,5 +4,5 @@ public interface Animal {
 
     //description d'un comportement
 
-    String son();
+    String son(); // que des methodes abstraites (pas d'implementation)
 }

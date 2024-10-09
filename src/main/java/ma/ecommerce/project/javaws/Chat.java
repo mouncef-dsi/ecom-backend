@@ -1,6 +1,6 @@
 package ma.ecommerce.project.javaws;
 
-public class Chat implements Animal{
+public class Chat extends Felin implements Animal{
 
     private String nom;
     private int age;
