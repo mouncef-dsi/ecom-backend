@@ -43,7 +43,7 @@ public class CategoryService {
     public void updateCategory(Long id, CategoryDto categoryDto) {
         Optional<Category> existingCategory = categoryRepository.findById(id);
 
-        if (existingCategory.isPresent()) {
+        if (existingCategory.isPresent()) { // commit
             Category category = existingCategory.get();
             category.setName(categoryDto.getName());
             category.setDescription(categoryDto.getDescription());
