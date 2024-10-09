@@ -1,7 +1,8 @@
 package ma.ecommerce.project.controllers;
 import ma.ecommerce.project.dto.AddressDto;
-import ma.ecommerce.project.services.AddressService;
+import ma.ecommerce.project.services.IAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
@@ -13,7 +14,9 @@ import java.util.List;
 public class AddressController {
 
     @Autowired
-    private AddressService addressService;
+    @Qualifier("addressServiceUpdated")
+    private IAddressService addressService;
+
 
     @GetMapping
     public List<AddressDto> getAddresses() {

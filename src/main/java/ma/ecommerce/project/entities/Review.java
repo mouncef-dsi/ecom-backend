@@ -1,8 +1,8 @@
 package ma.ecommerce.project.entities;
 import javax.persistence.Table;
 import javax.persistence.Column;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
+//import jakarta.validation.constraints.Max;
+//import jakarta.validation.constraints.Min;
 
 
 import javax.persistence.*;
@@ -15,8 +15,8 @@ public class Review {
     @Column(name = "ID")
     private long id;
     @Column(name = "rating")
-    @Min(1)
-    @Max(5)
+//    @Min(1)
+//    @Max(5)
     private int rating;
     @Column(name = "commentaire")
     private String commentaire;

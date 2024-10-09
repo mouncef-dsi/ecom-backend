@@ -6,6 +6,7 @@ import ma.ecommerce.project.entities.Client;
 import ma.ecommerce.project.repositories.AddressRepository;
 import ma.ecommerce.project.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,12 +14,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AddressService {
+@Primary
+public class AddressService implements IAddressService {
 
     @Autowired
     private AddressRepository addressRepository;
     @Autowired
     private ClientRepository clientRepository;
+
+
+    public AddressService() {
+        System.out.println("hello");
+    }
 
     public List<AddressDto> getAddresses() {
         List<Address> addresses = addressRepository.findAll();
