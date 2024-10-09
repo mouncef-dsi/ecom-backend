@@ -2,7 +2,7 @@ package ma.ecommerce.project.dto;
 
 import org.apache.juli.logging.Log;
 
-public class ProductDto {
+public class ProductDto implements Namable{
     private long id;
     private String name;
     private String color;

@@ -1,6 +1,6 @@
 package ma.ecommerce.project.dto;
 
-public class CategoryDto {
+public class CategoryDto implements Namable{
     private String name;
     private String description;
 

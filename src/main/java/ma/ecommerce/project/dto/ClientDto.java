@@ -1,6 +1,6 @@
 package ma.ecommerce.project.dto;
 
-public class ClientDto {
+public class ClientDto implements Namable{
     private String name;
     private String email ;
     private String phone;
