@@ -12,21 +12,21 @@ import java.util.List;
 @RequestMapping ("/categories")
 public class CategoriesController {
     @Autowired
-    private CategoryService categoryService;
+    private CategoryService ICategoryService;
 
     @GetMapping
     public List<CategoryDto> getAllCategories() {
-        return categoryService.getCategories();
+        return ICategoryService.getCategories();
     }
     @PostMapping
     public void addCategory(@RequestBody CategoryDto categoryDto) {
-        categoryService.createCategory(categoryDto);
+        ICategoryService.createCategory(categoryDto);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         try {
-            categoryService.deleteCategory(id);
+            ICategoryService.deleteCategory(id);
             return ResponseEntity.noContent().build(); // 204 No Content si la suppression réussie
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build(); // 404 Not Found si la catégorie n'existe pas
@@ -36,7 +36,7 @@ public class CategoriesController {
     @PutMapping("/{id}")
     public ResponseEntity<String> updateCategory(@PathVariable Long id, @RequestBody CategoryDto categoryDto) {
         try {
-            categoryService.updateCategory(id, categoryDto);
+            ICategoryService.updateCategory(id, categoryDto);
             return ResponseEntity.ok("Catégorie mise à jour avec succès");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();

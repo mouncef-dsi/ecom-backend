@@ -13,26 +13,26 @@ import java.util.List;
 public class AddressController {
 
     @Autowired
-    private AddressService addressService;
+    private AddressService IAddressService;
 
     @GetMapping
     public List<AddressDto> getAddresses() {
-        return addressService.getAddresses();
+        return IAddressService.getAddresses();
     }
 
     @GetMapping("/{city}")
     public List<AddressDto> getAddressesByCity(@PathVariable String city){
-        return addressService.getAddressesByCity(city);
+        return IAddressService.getAddressesByCity(city);
     }
     @PostMapping
     public void addAddress(@RequestBody AddressDto addressDto) {
-        addressService.createAddress(addressDto);
+        IAddressService.createAddress(addressDto);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAddress(@PathVariable Long id) {
         try {
-            addressService.deleteAddress(id);
+            IAddressService.deleteAddress(id);
             return ResponseEntity.noContent().build(); // 204 No Content si la suppression réussie
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build(); // 404 Not Found si l'adresse n'existe pas
@@ -42,7 +42,7 @@ public class AddressController {
     @PutMapping("/{id}")
     public ResponseEntity<String> updateAddress(@PathVariable Long id, @RequestBody AddressDto addressDto) {
         try {
-            addressService.updateAddress(id, addressDto);
+            IAddressService.updateAddress(id, addressDto);
             return ResponseEntity.ok("Adresse mise à jour avec succès");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();

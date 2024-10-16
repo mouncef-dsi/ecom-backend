@@ -1,13 +1,10 @@
 package ma.ecommerce.project.services;
 
-import ma.ecommerce.project.dto.AddressDto;
+
 import ma.ecommerce.project.dto.ProductDto;
-import ma.ecommerce.project.entities.Address;
 import ma.ecommerce.project.entities.Category;
-import ma.ecommerce.project.entities.Client;
 import ma.ecommerce.project.entities.Product;
 import ma.ecommerce.project.repositories.CategoryRepository;
-import ma.ecommerce.project.repositories.ClientRepository;
 import ma.ecommerce.project.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProductService {
+public class ProductService implements IProductService {
 
     @Autowired
     private ProductRepository productRepository;
@@ -83,5 +80,13 @@ public class ProductService {
             throw new IllegalArgumentException("Le produit avec l'identifiant " + id + " n'existe pas.");
         }
     }
+
+    public List<ProductDto> getProductsByRatingGreaterThan(int rating) {
+        List<Product> products = productRepository.findProductsByReviewRatingGreaterThan(rating);
+        List<ProductDto> productDtos = new ArrayList<>();
+        products.forEach(product -> productDtos.add(new ProductDto(product.getId(), product.getName(), product.getColor(), product.getSize())));
+        return productDtos;
+    }
+
 
 }

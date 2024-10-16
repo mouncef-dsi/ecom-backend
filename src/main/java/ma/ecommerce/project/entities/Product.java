@@ -1,8 +1,9 @@
 package ma.ecommerce.project.entities;
 
-import org.springframework.web.bind.annotation.GetMapping;
+
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ECOM_PRODUCT")
@@ -18,7 +19,9 @@ public class Product {
     private String size;
     @ManyToOne (fetch = FetchType.LAZY)
     private Category category;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
+    private List<Review> reviews;
 
 
     public void setId(Long id) {

@@ -4,7 +4,7 @@ public class ReviewDto {
     private long id;
     private int rating;
     private String commentaire;
-    private Long idClient;
+    private Long idProduct;
 
 
     public long getId() {
@@ -31,12 +31,12 @@ public class ReviewDto {
         this.commentaire = commentaire;
     }
 
-    public Long getIdClient() {
-        return idClient;
+    public Long getIdProduct() {
+        return idProduct;
     }
 
-    public void setIdClient(Long idClient) {
-        this.idClient = idClient;
+    public void setIdProduct(Long idProduct) {
+        this.idProduct = idProduct;
     }
 
 
@@ -45,6 +45,6 @@ public class ReviewDto {
         this.id = id;
         this.rating = rating;
         this.commentaire = commentaire;
-        this.idClient = idClient;
+
     }
 }

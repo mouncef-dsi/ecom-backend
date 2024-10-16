@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AddressService {
+public class AddressService implements IAddressService{
 
     @Autowired
     private AddressRepository addressRepository;

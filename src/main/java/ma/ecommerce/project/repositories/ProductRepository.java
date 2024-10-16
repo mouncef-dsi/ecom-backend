@@ -17,4 +17,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("SELECT p FROM Product p WHERE LOWER(p.color) = LOWER(:color) AND LOWER(p.size) = LOWER(:size)")
     List<Product> getProductsByCriteriaIgnoreCase(@Param("color") String color, @Param("size") String size);
 
+    @Query("SELECT p FROM Product p JOIN p.reviews r WHERE r.rating > :rating")
+    List<Product> findProductsByReviewRatingGreaterThan(int rating);
+
 }

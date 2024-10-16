@@ -12,21 +12,21 @@ import java.util.List;
 public class ClientsController {
 
     @Autowired
-    private ClientService clientService;
+    private ClientService IClientService;
 
     @GetMapping
     public List<ClientDto> getAllClients() {
-        return clientService.getClients();
+        return IClientService.getClients();
     }
 
     @PostMapping
     public void addClient(@RequestBody ClientDto clientDto) {
-        clientService.createClient(clientDto);
+        IClientService.createClient(clientDto);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
         try {
-            clientService.deleteClient(id);
+            IClientService.deleteClient(id);
             return ResponseEntity.noContent().build(); // 204 No Content si la suppression réussie
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build(); // 404 Not Found si le client n'existe pas
@@ -36,7 +36,7 @@ public class ClientsController {
     @PutMapping("/{id}")
     public ResponseEntity<String> updateClient(@PathVariable Long id, @RequestBody ClientDto clientDto) {
         try {
-            clientService.updateClient(id, clientDto);
+            IClientService.updateClient(id, clientDto);
             return ResponseEntity.ok("Client mis à jour avec succès");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
