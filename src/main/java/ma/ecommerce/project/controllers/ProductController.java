@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ma.ecommerce.project.dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import ma.ecommerce.project.projection.ProductProjection;
 
 
 import java.util.List;
@@ -63,6 +64,11 @@ public class ProductController {
     @GetMapping("/by-rating")
     public List<ProductDto> getProductsByRating(@RequestParam("rating") int rating) {
         return productService.getProductsByRatingGreaterThan(rating);
+    }
+
+    @GetMapping("/projections")
+    public List<ProductProjection> getProductProjections() {
+        return productService.getAllProductProjections();
     }
 
 

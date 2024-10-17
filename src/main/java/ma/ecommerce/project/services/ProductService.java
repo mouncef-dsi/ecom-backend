@@ -8,6 +8,7 @@ import ma.ecommerce.project.repositories.CategoryRepository;
 import ma.ecommerce.project.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ma.ecommerce.project.projection.ProductProjection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,10 @@ public class ProductService implements IProductService {
     private ProductRepository productRepository;
     @Autowired
     private CategoryRepository categoryRepository;
+
+    public List<ProductProjection> getAllProductProjections() {
+        return productRepository.getProducts();
+    }
 
 
     public List<ProductDto> getProducts(){
