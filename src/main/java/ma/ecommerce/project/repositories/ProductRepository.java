@@ -21,8 +21,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("SELECT p FROM Product p JOIN p.reviews r WHERE r.rating > :rating")
     List<Product> findProductsByReviewRatingGreaterThan(int rating);
 
-    @Query("SELECT p.id AS id, p.name AS name FROM Product p")
-    List<ProductProjection> getProducts();
+
+    List<ProductProjection> findProductByName(String name);
 
 
 }

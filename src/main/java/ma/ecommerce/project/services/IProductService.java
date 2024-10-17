@@ -2,6 +2,7 @@ package ma.ecommerce.project.services;
 
 
 import ma.ecommerce.project.dto.ProductDto;
+import ma.ecommerce.project.projection.ProductProjection;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface IProductService {
     void deleteProduct(Long id);
 
     List<ProductDto> getProductsByRatingGreaterThan(int rating);
+
+    List<ProductProjection> getAllProductProjections(String name);
 }

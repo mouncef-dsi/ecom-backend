@@ -66,9 +66,9 @@ public class ProductController {
         return productService.getProductsByRatingGreaterThan(rating);
     }
 
-    @GetMapping("/projections")
-    public List<ProductProjection> getProductProjections() {
-        return productService.getAllProductProjections();
+    @GetMapping("/projections/{name}")
+    public List<ProductProjection> getProductProjections(@PathVariable String name) {
+        return productService.getAllProductProjections(name);
     }
 
 
