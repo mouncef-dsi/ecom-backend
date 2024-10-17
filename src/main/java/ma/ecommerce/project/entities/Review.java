@@ -1,11 +1,11 @@
 package ma.ecommerce.project.entities;
 import javax.persistence.Table;
 import javax.persistence.Column;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "ECOM_REVIEW")
