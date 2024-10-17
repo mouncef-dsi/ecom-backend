@@ -1,4 +1,5 @@
 package ma.ecommerce.project.controllers;
+import ma.ecommerce.project.services.ICategoryService;
 import org.springframework.http.ResponseEntity;
 import ma.ecommerce.project.dto.CategoryDto;
 import ma.ecommerce.project.services.CategoryService;
@@ -12,21 +13,21 @@ import java.util.List;
 @RequestMapping ("/categories")
 public class CategoriesController {
     @Autowired
-    private CategoryService ICategoryService;
+    private ICategoryService categoryService;
 
     @GetMapping
     public List<CategoryDto> getAllCategories() {
-        return ICategoryService.getCategories();
+        return categoryService.getCategories();
     }
     @PostMapping
     public void addCategory(@RequestBody CategoryDto categoryDto) {
-        ICategoryService.createCategory(categoryDto);
+        categoryService.createCategory(categoryDto);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         try {
-            ICategoryService.deleteCategory(id);
+            categoryService.deleteCategory(id);
             return ResponseEntity.noContent().build(); // 204 No Content si la suppression réussie
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build(); // 404 Not Found si la catégorie n'existe pas
@@ -36,7 +37,7 @@ public class CategoriesController {
     @PutMapping("/{id}")
     public ResponseEntity<String> updateCategory(@PathVariable Long id, @RequestBody CategoryDto categoryDto) {
         try {
-            ICategoryService.updateCategory(id, categoryDto);
+            categoryService.updateCategory(id, categoryDto);
             return ResponseEntity.ok("Catégorie mise à jour avec succès");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();

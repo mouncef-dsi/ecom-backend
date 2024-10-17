@@ -1,4 +1,5 @@
 package ma.ecommerce.project.controllers;
+import ma.ecommerce.project.services.IClientService;
 import org.springframework.http.ResponseEntity;
 import ma.ecommerce.project.dto.ClientDto;
 import ma.ecommerce.project.services.ClientService;
@@ -12,21 +13,21 @@ import java.util.List;
 public class ClientsController {
 
     @Autowired
-    private ClientService IClientService;
+    private IClientService clientService;
 
     @GetMapping
     public List<ClientDto> getAllClients() {
-        return IClientService.getClients();
+        return clientService.getClients();
     }
 
     @PostMapping
     public void addClient(@RequestBody ClientDto clientDto) {
-        IClientService.createClient(clientDto);
+        clientService.createClient(clientDto);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
         try {
-            IClientService.deleteClient(id);
+            clientService.deleteClient(id);
             return ResponseEntity.noContent().build(); // 204 No Content si la suppression réussie
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build(); // 404 Not Found si le client n'existe pas
@@ -36,7 +37,7 @@ public class ClientsController {
     @PutMapping("/{id}")
     public ResponseEntity<String> updateClient(@PathVariable Long id, @RequestBody ClientDto clientDto) {
         try {
-            IClientService.updateClient(id, clientDto);
+            clientService.updateClient(id, clientDto);
             return ResponseEntity.ok("Client mis à jour avec succès");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
